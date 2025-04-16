@@ -18,3 +18,5 @@ python -m pip install -r requirement.txt
 ````
 ## Step4
 ````bash
+python app.py
+````
