@@ -1,7 +1,7 @@
 ## Building Url Dynamically
 ### Variables rules and URL building
 
-from flask import Flask
+from flask import Flask,redirect,url_for
 
 # object of Flask class
 app=Flask(__name__)
@@ -15,7 +15,8 @@ def welcome():
 
 @app.route('/success/<int:score>')
 def success(score):
-    return "The person has passed and the marks is " + str(score)
+    return "<html><body><h1>The person has passed and the marks is " + str(score) + "</h1></body></html>"
+    
 
 
 @app.route('/fail/<int:score>')
@@ -24,14 +25,26 @@ def fail(score):
 
 
 ### Result checker
-@app.route('/results/<int:score>')
-def results(score):
+# @app.route('/results/<int:score>')
+# def results(score):
+#     result=""
+#     if score<50:
+#         result='fail'
+#     else:
+#         result='success'
+#     return result
+
+
+
+## Dynamic URL Building
+@app.route('/results/<int:marks>')
+def results(marks):
     result=""
-    if score<50:
+    if marks<50:
         result='fail'
     else:
         result='success'
-    return result
+    return redirect(url_for(result,score=marks))
 
 
 if __name__=='__main__':

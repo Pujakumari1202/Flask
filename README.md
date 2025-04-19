@@ -20,3 +20,9 @@ python -m pip install -r requirement.txt
 ````bash
 python app.py
 ````
+
+## 
+````bash
+"localhost:8080"
+"localhost:8080/results/50"
+````
